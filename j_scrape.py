@@ -41,7 +41,7 @@ def career_one_stop(_keyword, _location, _distance, _size):
 	j_soup = BeautifulSoup(j_sauce, 'html.parser')
 
 	results = j_soup.find('div', {'class': re.compile("div-Messages")})
-	num_results = results.find('strong'),text
+	num_results = results.find('strong').text
 	print(num_results)
 	table = j_soup.find('table', {'class': re.compile("res-table")})
 	rows = table.findAll('tr')
@@ -73,6 +73,7 @@ def career_one_stop(_keyword, _location, _distance, _size):
 if __name__ == "__main__":
 
 	keyword = input("Enter key words for job search: ")
+	keyword = keyword.replace(' ', '%20'.format())
 	location = input("Enter a zip code: ")
 	distance = input("Enter the distance: ")
 	size = input("Enter the max number of results: ")
