@@ -1,6 +1,7 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import re
+import webbrowser as wb
 
 '''
 	INDEED "https://www.indeed.com/jobs?q=" + search_query + "&l=Long+Beach%2C+CA"
@@ -70,6 +71,12 @@ def career_one_stop(_keyword, _location, _distance, _size):
 		print("Date: " + _.get_date() + "\n")
 		print("Link: " + _.get_link() + "\n")
 
+	return info
+
+def view_in_browser(view_count=0):
+	for i in range(view_count):
+			wb.open_new(listings[i].get_link())
+
 if __name__ == "__main__":
 
 	keyword = input("Enter key words for job search: ")
@@ -78,6 +85,8 @@ if __name__ == "__main__":
 	distance = input("Enter the distance: ")
 	size = input("Enter the max number of results: ")
 
-	career_one_stop(_keyword=keyword, _location=location, _distance=distance, _size=size)
+	listings = career_one_stop(_keyword=keyword, _location=location, _distance=distance, _size=size)
 	
- 
+	n = int(input("How many would you like to open: "))
+
+	view_in_browser(view_count=n)
