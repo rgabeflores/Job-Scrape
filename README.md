@@ -1,4 +1,4 @@
-#### j_scrape
+# j_scrape
 
 This script visits https://www.careeronestop.org/, queries a job search, and grabs data from a given number of listings.
 
